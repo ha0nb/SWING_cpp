@@ -36,7 +36,7 @@ int main() {
 					}//if
 				}//두번째 for
 			}//좌석 모양 출력 끝나는 부분
-			cout << endl  << "몇열, 몇번째 좌석을 예약하시겠습니까?";
+			cout << endl << "몇열, 몇번째 좌석을 예약하시겠습니까?";
 			cin >> row >> column;
 			/*입력받은 열과 번호에 대한 답변*/
 			if (row < 1 || row > ROW || column < 1 || column > COLUMN) {
@@ -77,8 +77,8 @@ int main() {
 			}//좌석 모양 출력 끝나는 부분
 			cout << endl << "현재 좌석과 변경하고자하는 좌석을 입력해주세요" << endl << "( [현재 열,번호] --> [변경할 열,번호] 순서로 작성 )" << endl;
 			cin >> row >> column >> n_row >> n_column; //4개의 숫자를 입력받아서 각각의 변수에 넣는다.
-			if (1 <= row && row <= ROW && 1 <= n_row && n_row <= ROW && 1 <= column && column <= COLUMN && 1 <= n_column && n_column <= COLUMN){
-				//이건 마지막 else를 하고싶어서 선제조건으로 넣었는데 작동이 잘안된다ㅠ
+			if (1 <= row && row <= ROW && 1 <= n_row && n_row <= ROW && 1 <= column && column <= COLUMN && 1 <= n_column && n_column <= COLUMN) {
+				//이건 마지막 else를 하고싶어서 선제조건으로 넣었다.
 				if (seat[row - 1][column - 1] == 1) {//인데스 번호를 입력받은 값에서 -1하는것을 꼭 기억하자!!
 					if (seat[n_row - 1][n_column - 1] == 0) {
 						seat[row - 1][column - 1] = 0;
@@ -98,11 +98,11 @@ int main() {
 			}//else 좌석을 정확히 입력해라
 
 		}//no.2
-		
+
 		/*3*/if (num == 3) {/*break*/
 		}//no.3
-		
-		/*4*/if (num<1 || num >3) {
+
+		/*4*/if (num < 1 || num >3) {
 			cout << endl << "※※올바른 번호를 입력해주세요※※";
 		}//no.4
 
@@ -110,3 +110,4 @@ int main() {
 	while (num != 3);//프로그램 종료를 입력하지않는이상 계속 돌아가게 
 
 }//메인함수
+
