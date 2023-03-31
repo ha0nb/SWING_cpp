@@ -2,11 +2,11 @@
 using namespace std;
 
 int main() {
-	int num, row, column, n_row, n_column;
-	const int ROW = 10, COLUMN = 6;
-	int seat[ROW][COLUMN] = { 0 }; 
+	int num, row, column, n_row, n_column;//차례대로 메뉴번호, 열, 번호, 변경열, 변경번호이다.
+	const int ROW = 10, COLUMN = 6;//좌석 열과번호를 기호상수로 고정시켰다.
+	int seat[ROW][COLUMN] = { 0 }; //좌석의 배열을 0으로 초기화시켰다. 2차원배열로 선언.
 
-	do {
+	do {//do while을 써서 3번 종료를 누르지않는이상 계속 예약 시스템이 켜지도록 설정했다.
 		cout << "\n** 비행기 좌석 예약 시스템 **" << endl << endl;
 		cout << "1. 신규 예약\n2. 예약 변경\n3. 프로그램 종료" << endl << endl;
 		cout << "번호를 입력하세요 : ";
@@ -76,12 +76,13 @@ int main() {
 				}//두번째 for
 			}//좌석 모양 출력 끝나는 부분
 			cout << endl << "현재 좌석과 변경하고자하는 좌석을 입력해주세요" << endl << "( [현재 열,번호] --> [변경할 열,번호] 순서로 작성 )" << endl;
-			cin >> row >> column >> n_row >> n_column;
-			if (1 < row < ROW && 1 < n_row < ROW && 1 < column < COLUMN && 1 < n_column < COLUMN) {
-				if (seat[row - 1][column - 1] == 1) {
+			cin >> row >> column >> n_row >> n_column; //4개의 숫자를 입력받아서 각각의 변수에 넣는다.
+			if (1 <= row && row <= ROW && 1 <= n_row && n_row <= ROW && 1 <= column && column <= COLUMN && 1 <= n_column && n_column <= COLUMN){
+				//이건 마지막 else를 하고싶어서 선제조건으로 넣었는데 작동이 잘안된다ㅠ
+				if (seat[row - 1][column - 1] == 1) {//인데스 번호를 입력받은 값에서 -1하는것을 꼭 기억하자!!
 					if (seat[n_row - 1][n_column - 1] == 0) {
 						seat[row - 1][column - 1] = 0;
-						seat[n_row - 1][n_column - 1] = 1;
+						seat[n_row - 1][n_column - 1] = 1;//예약변경이 완료되었으면 좌석표를 업데이트하는것도 잊지말자!
 						cout << "좌석 예약이 완료되었습니다." << endl;
 					}//if변경할 좌석이 공석이다 -->예약
 					else {
@@ -106,6 +107,6 @@ int main() {
 		}//no.4
 
 	}//do
-	while (num != 3);
+	while (num != 3);//프로그램 종료를 입력하지않는이상 계속 돌아가게 
 
 }//메인함수
